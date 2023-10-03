@@ -1,0 +1,51 @@
+spring:
+    datasource:
+        url:
+        driver-class-name:
+        username:
+        password:
+    redis:
+        session:
+            host: localhost
+            port: 6379
+        cache:
+            host: localhost
+            port: 6380
+    profiles:
+        active: dev
+    session:
+        store-type: redis
+    cache:
+      type: redis
+    messages:
+        basename: message/messages
+        encoding: UTF-8
+        fallback-to-system-locale: false
+        always-use-message-format: true
+
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+        ddl-auto: none
+    properties:
+        hibernate:
+            format_sql: true
+    defer-datasource-initialization: false
+
+    logging:
+        level:
+            sql: debug
+            org.hibernate.type: INFO
+
+jwt:
+    header: Authorization
+    #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+    secret: a2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbQ==
+    token-validity-in-seconds: 86400 # ttl (초)
+
+#전체 로그 레벨 설정(기본 info)
+logging:
+    level:
+        root: info
+    hello:
+        springmvc: debug
